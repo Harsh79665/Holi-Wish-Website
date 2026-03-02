@@ -1,0 +1,1042 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Happy Holi 2026 - Send colorful wishes to your loved ones with this beautiful animated greeting!">
+  <meta name="keywords" content="Holi 2026, Happy Holi, Holi Wishes, Festival of Colors, Indian Festival">
+  <meta name="author" content="Holi Greetings">
+  <meta property="og:title" content="Happy Holi 2026 🎨">
+  <meta property="og:description" content="Celebrate the festival of colors with this stunning animated greeting!">
+  <meta property="og:type" content="website">
+  <title>🎨 Happy Holi 2026 - Festival of Colors</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(-45deg, #ff6b9d, #ffd93d, #6bcb77, #4d96ff, #ff6b9d);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      min-height: 100%;
+      overflow-y: auto;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Loading Screen */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    .loading-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader {
+      width: 80px;
+      height: 80px;
+      position: relative;
+    }
+
+    .loader-circle {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      animation: loaderSpin 1.5s ease-in-out infinite;
+    }
+
+    .loader-circle:nth-child(1) {
+      border: 4px solid transparent;
+      border-top-color: #ff6b9d;
+      animation-delay: 0s;
+    }
+
+    .loader-circle:nth-child(2) {
+      border: 4px solid transparent;
+      border-right-color: #ffd93d;
+      animation-delay: 0.15s;
+      width: 70%;
+      height: 70%;
+      top: 15%;
+      left: 15%;
+    }
+
+    .loader-circle:nth-child(3) {
+      border: 4px solid transparent;
+      border-bottom-color: #6bcb77;
+      animation-delay: 0.3s;
+      width: 50%;
+      height: 50%;
+      top: 25%;
+      left: 25%;
+    }
+
+    @keyframes loaderSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      color: white;
+      font-size: 1.2rem;
+      margin-top: 20px;
+      font-weight: 500;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Particles Canvas */
+    #particles-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Fireworks Canvas */
+    #fireworks-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    #fireworks-canvas.active {
+      opacity: 1;
+    }
+
+    /* Entry Screen */
+    .entry-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 50;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      transition: opacity 0.8s ease, visibility 0.8s ease, transform 0.8s ease;
+    }
+
+    .entry-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(1.1);
+    }
+
+    .surprise-btn {
+      padding: 25px 50px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      background: linear-gradient(45deg, #ff6b9d, #ffd93d, #6bcb77, #4d96ff);
+      background-size: 300% 300%;
+      border: none;
+      border-radius: 60px;
+      cursor: pointer;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 107, 157, 0.5);
+      animation: gradientShift 3s ease infinite, buttonPulse 2s ease-in-out infinite;
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+
+    .surprise-btn:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes buttonPulse {
+      0%, 100% { box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 107, 157, 0.5); }
+      50% { box-shadow: 0 10px 60px rgba(0, 0, 0, 0.4), 0 0 50px rgba(255, 215, 61, 0.7); }
+    }
+
+    .entry-hint {
+      color: white;
+      font-size: 1rem;
+      margin-top: 20px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Main Content */
+    .main-content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100%;
+      padding: 40px 20px;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .main-content.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Glassmorphism Card */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 50px 40px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+      animation: cardFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .rangoli {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      animation: rangoliFade 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes rangoliFade {
+      0% { filter: drop-shadow(0 0 10px #ff6b9d); }
+      100% { filter: drop-shadow(0 0 20px #ffd93d); }
+    }
+
+    .greeting-text {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(45deg, #ff6b9d, #ffd93d, #6bcb77, #4d96ff, #ff6b9d);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 4s ease infinite, glowText 2s ease-in-out infinite alternate;
+      line-height: 1.3;
+      margin-bottom: 15px;
+    }
+
+    @keyframes glowText {
+      0% { filter: drop-shadow(0 0 5px rgba(255, 107, 157, 0.5)); }
+      100% { filter: drop-shadow(0 0 20px rgba(255, 215, 61, 0.8)); }
+    }
+
+    .sub-message {
+      font-size: 1.1rem;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    /* Countdown Timer */
+    .countdown-section {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
+      padding: 25px;
+      margin: 25px 0;
+    }
+
+    .countdown-title {
+      color: white;
+      font-size: 1rem;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .countdown-item {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      padding: 15px 20px;
+      min-width: 80px;
+    }
+
+    .countdown-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #ffd93d;
+      text-shadow: 0 0 20px rgba(255, 215, 61, 0.5);
+    }
+
+    .countdown-label {
+      font-size: 0.7rem;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 5px;
+    }
+
+    /* Buttons */
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    .action-btn {
+      padding: 15px 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-btn {
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: white;
+    }
+
+    .whatsapp-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+    }
+
+    .music-btn {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+    }
+
+    .music-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    }
+
+    /* Floating Balloons */
+    .balloon {
+      position: fixed;
+      font-size: 3rem;
+      animation: floatBalloon 10s ease-in-out infinite;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    @keyframes floatBalloon {
+      0%, 100% { transform: translateY(0) rotate(-5deg); }
+      50% { transform: translateY(-30px) rotate(5deg); }
+    }
+
+    /* Color Splash */
+    .color-splash {
+      position: fixed;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 200;
+      animation: splashExpand 0.8s ease-out forwards;
+    }
+
+    @keyframes splashExpand {
+      0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(3);
+        opacity: 0;
+      }
+    }
+
+    /* Footer */
+    .footer {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 20px;
+      color: white;
+      font-size: 0.9rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .visitor-count {
+      font-size: 0.8rem;
+      opacity: 0.8;
+      margin-top: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .surprise-btn {
+        padding: 20px 40px;
+        font-size: 1.2rem;
+      }
+
+      .glass-card {
+        padding: 30px 25px;
+        margin: 20px;
+      }
+
+      .greeting-text {
+        font-size: 1.8rem;
+      }
+
+      .rangoli {
+        font-size: 3rem;
+      }
+
+      .countdown-item {
+        min-width: 65px;
+        padding: 12px 15px;
+      }
+
+      .countdown-number {
+        font-size: 1.5rem;
+      }
+
+      .action-btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .greeting-text {
+        font-size: 1.5rem;
+      }
+
+      .sub-message {
+        font-size: 1rem;
+      }
+
+      .countdown-timer {
+        gap: 10px;
+      }
+
+      .countdown-item {
+        min-width: 55px;
+        padding: 10px 12px;
+      }
+
+      .countdown-number {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full"><!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+   <div class="loader">
+    <div class="loader-circle"></div>
+    <div class="loader-circle"></div>
+    <div class="loader-circle"></div>
+   </div>
+   <p class="loading-text">Preparing your colorful surprise...</p>
+  </div><!-- Particles Canvas -->
+  <canvas id="particles-canvas"></canvas><!-- Fireworks Canvas -->
+  <canvas id="fireworks-canvas"></canvas><!-- Entry Screen -->
+  <div class="entry-screen" id="entryScreen"><button class="surprise-btn" id="surpriseBtn"> Click to Open Your Holi Surprise 🎁 </button>
+   <p class="entry-hint">🌈 Something colorful awaits you! 🌈</p>
+  </div><!-- Floating Balloons -->
+  <div class="balloon" style="left: 5%; top: 20%;">
+   🎈
+  </div>
+  <div class="balloon" style="left: 90%; top: 15%; animation-delay: -2s;">
+   🎈
+  </div>
+  <div class="balloon" style="left: 15%; top: 70%; animation-delay: -4s;">
+   🎈
+  </div>
+  <div class="balloon" style="left: 85%; top: 65%; animation-delay: -6s;">
+   🎈
+  </div>
+  <div class="balloon" style="left: 50%; top: 80%; animation-delay: -3s;">
+   🎈
+  </div><!-- Main Content -->
+  <div class="main-content" id="mainContent">
+   <div class="glass-card">
+    <div class="rangoli">
+     🎨🌸🪷🌺🎨
+    </div>
+    <h1 class="greeting-text" id="greetingText">🌈 Happy Holi 2026! 🎉</h1>
+    <p class="sub-message" id="subMessage">Wishing you a festival filled with the brightest colors of joy, love, and laughter! May this Holi paint your life with beautiful memories and endless happiness! 💖</p><!-- Countdown Timer -->
+    <div class="countdown-section">
+     <p class="countdown-title">⏰ Countdown to Holi 2026</p>
+     <div class="countdown-timer">
+      <div class="countdown-item">
+       <div class="countdown-number" id="days">
+        00
+       </div>
+       <div class="countdown-label">
+        Days
+       </div>
+      </div>
+      <div class="countdown-item">
+       <div class="countdown-number" id="hours">
+        00
+       </div>
+       <div class="countdown-label">
+        Hours
+       </div>
+      </div>
+      <div class="countdown-item">
+       <div class="countdown-number" id="minutes">
+        00
+       </div>
+       <div class="countdown-label">
+        Minutes
+       </div>
+      </div>
+      <div class="countdown-item">
+       <div class="countdown-number" id="seconds">
+        00
+       </div>
+       <div class="countdown-label">
+        Seconds
+       </div>
+      </div>
+     </div>
+    </div><!-- Action Buttons -->
+    <div class="action-buttons"><button class="action-btn whatsapp-btn" id="shareBtn">
+      <svg width="20" height="20" viewbox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+      </svg> Share on WhatsApp </button> <button class="action-btn music-btn" id="musicBtn"> 🎵 Play Music </button>
+    </div>
+   </div>
+  </div><!-- Footer -->
+  <footer class="footer">
+   <p id="footerText">Made with ❤️ for Holi 2026</p>
+   <p class="visitor-count" id="visitorCount">🎨 Spreading colors to happy visitors!</p>
+  </footer>
+  <script>
+    // ===== Configuration =====
+    const defaultConfig = {
+      main_greeting: "Happy Holi 2026!",
+      sub_message: "Wishing you a festival filled with the brightest colors of joy, love, and laughter! May this Holi paint your life with beautiful memories and endless happiness! 💖",
+      footer_text: "Made with ❤️ for Holi 2026",
+      background_color: "#ff6b9d",
+      text_color: "#ffffff",
+      accent_color: "#ffd93d",
+      secondary_accent: "#6bcb77",
+      button_color: "#4d96ff",
+      font_family: "Poppins"
+    };
+
+    let config = { ...defaultConfig };
+
+    // ===== Get Name from URL =====
+    function getNameFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('name') || 'Friend';
+    }
+
+    const visitorName = getNameFromURL();
+
+    // ===== Update Greeting =====
+    function updateGreeting() {
+      const greetingEl = document.getElementById('greetingText');
+      const mainGreeting = config.main_greeting || defaultConfig.main_greeting;
+      greetingEl.textContent = `🌈 ${mainGreeting.replace('!', '')}, ${visitorName}! 🎉`;
+    }
+
+    // ===== Countdown Timer =====
+    function updateCountdown() {
+      // Holi 2026 is on March 3, 2026
+      const holiDate = new Date(2026, 2, 3, 0, 0, 0).getTime();
+      const now = new Date().getTime();
+      const distance = holiDate - now;
+
+      if (distance > 0) {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+      } else {
+        document.getElementById('days').textContent = '🎉';
+        document.getElementById('hours').textContent = '🎉';
+        document.getElementById('minutes').textContent = '🎉';
+        document.getElementById('seconds').textContent = '🎉';
+      }
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // ===== Particles Animation =====
+    const particlesCanvas = document.getElementById('particles-canvas');
+    const pCtx = particlesCanvas.getContext('2d');
+    let particles = [];
+
+    function resizeParticlesCanvas() {
+      particlesCanvas.width = window.innerWidth;
+      particlesCanvas.height = window.innerHeight;
+    }
+
+    resizeParticlesCanvas();
+    window.addEventListener('resize', resizeParticlesCanvas);
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * particlesCanvas.width;
+        this.y = Math.random() * particlesCanvas.height;
+        this.size = Math.random() * 8 + 3;
+        this.speedX = Math.random() * 2 - 1;
+        this.speedY = Math.random() * 2 - 1;
+        this.color = ['#ff6b9d', '#ffd93d', '#6bcb77', '#4d96ff', '#ff9ff3', '#feca57'][Math.floor(Math.random() * 6)];
+        this.opacity = Math.random() * 0.6 + 0.3;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x < 0 || this.x > particlesCanvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > particlesCanvas.height) this.speedY *= -1;
+      }
+
+      draw() {
+        pCtx.beginPath();
+        pCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        pCtx.fillStyle = this.color;
+        pCtx.globalAlpha = this.opacity;
+        pCtx.fill();
+        pCtx.globalAlpha = 1;
+      }
+    }
+
+    // Create particles
+    for (let i = 0; i < 50; i++) {
+      particles.push(new Particle());
+    }
+
+    function animateParticles() {
+      pCtx.clearRect(0, 0, particlesCanvas.width, particlesCanvas.height);
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+
+    animateParticles();
+
+    // ===== Fireworks Animation =====
+    const fireworksCanvas = document.getElementById('fireworks-canvas');
+    const fCtx = fireworksCanvas.getContext('2d');
+    let fireworks = [];
+    let fireworkParticles = [];
+
+    function resizeFireworksCanvas() {
+      fireworksCanvas.width = window.innerWidth;
+      fireworksCanvas.height = window.innerHeight;
+    }
+
+    resizeFireworksCanvas();
+    window.addEventListener('resize', resizeFireworksCanvas);
+
+    class Firework {
+      constructor(x, y) {
+        this.x = x;
+        this.y = fireworksCanvas.height;
+        this.targetY = y;
+        this.speed = 8;
+        this.exploded = false;
+        this.color = ['#ff6b9d', '#ffd93d', '#6bcb77', '#4d96ff', '#ff9ff3'][Math.floor(Math.random() * 5)];
+      }
+
+      update() {
+        if (!this.exploded) {
+          this.y -= this.speed;
+          if (this.y <= this.targetY) {
+            this.explode();
+          }
+        }
+      }
+
+      explode() {
+        this.exploded = true;
+        for (let i = 0; i < 50; i++) {
+          fireworkParticles.push(new FireworkParticle(this.x, this.y, this.color));
+        }
+      }
+
+      draw() {
+        if (!this.exploded) {
+          fCtx.beginPath();
+          fCtx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+          fCtx.fillStyle = this.color;
+          fCtx.fill();
+        }
+      }
+    }
+
+    class FireworkParticle {
+      constructor(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.angle = Math.random() * Math.PI * 2;
+        this.speed = Math.random() * 5 + 2;
+        this.friction = 0.95;
+        this.gravity = 0.1;
+        this.opacity = 1;
+        this.decay = Math.random() * 0.02 + 0.01;
+        this.vx = Math.cos(this.angle) * this.speed;
+        this.vy = Math.sin(this.angle) * this.speed;
+      }
+
+      update() {
+        this.vx *= this.friction;
+        this.vy *= this.friction;
+        this.vy += this.gravity;
+        this.x += this.vx;
+        this.y += this.vy;
+        this.opacity -= this.decay;
+      }
+
+      draw() {
+        fCtx.beginPath();
+        fCtx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+        fCtx.fillStyle = this.color;
+        fCtx.globalAlpha = this.opacity;
+        fCtx.fill();
+        fCtx.globalAlpha = 1;
+      }
+    }
+
+    function triggerFireworks() {
+      fireworksCanvas.classList.add('active');
+      for (let i = 0; i < 8; i++) {
+        setTimeout(() => {
+          const x = Math.random() * fireworksCanvas.width * 0.8 + fireworksCanvas.width * 0.1;
+          const y = Math.random() * fireworksCanvas.height * 0.4 + fireworksCanvas.height * 0.1;
+          fireworks.push(new Firework(x, y));
+        }, i * 200);
+      }
+
+      setTimeout(() => {
+        fireworksCanvas.classList.remove('active');
+      }, 4000);
+    }
+
+    function animateFireworks() {
+      fCtx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+      fCtx.fillRect(0, 0, fireworksCanvas.width, fireworksCanvas.height);
+
+      fireworks = fireworks.filter(fw => !fw.exploded);
+      fireworks.forEach(fw => {
+        fw.update();
+        fw.draw();
+      });
+
+      fireworkParticles = fireworkParticles.filter(p => p.opacity > 0);
+      fireworkParticles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+
+      requestAnimationFrame(animateFireworks);
+    }
+
+    animateFireworks();
+
+    // ===== Confetti Animation =====
+    function createConfetti() {
+      const colors = ['#ff6b9d', '#ffd93d', '#6bcb77', '#4d96ff', '#ff9ff3', '#feca57', '#ff6b6b'];
+      
+      for (let i = 0; i < 150; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement('div');
+          confetti.style.cssText = `
+            position: fixed;
+            width: ${Math.random() * 10 + 5}px;
+            height: ${Math.random() * 10 + 5}px;
+            background: ${colors[Math.floor(Math.random() * colors.length)]};
+            left: ${Math.random() * 100}%;
+            top: -20px;
+            border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
+            z-index: 150;
+            pointer-events: none;
+            animation: confettiFall ${Math.random() * 3 + 2}s linear forwards;
+          `;
+          document.body.appendChild(confetti);
+
+          setTimeout(() => confetti.remove(), 5000);
+        }, i * 20);
+      }
+    }
+
+    // Add confetti animation to document
+    const confettiStyle = document.createElement('style');
+    confettiStyle.textContent = `
+      @keyframes confettiFall {
+        0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+      }
+    `;
+    document.head.appendChild(confettiStyle);
+
+    // ===== Color Splash on Click =====
+    document.addEventListener('click', (e) => {
+      if (document.getElementById('mainContent').classList.contains('visible')) {
+        const colors = ['#ff6b9d', '#ffd93d', '#6bcb77', '#4d96ff', '#ff9ff3', '#feca57'];
+        const splash = document.createElement('div');
+        splash.className = 'color-splash';
+        splash.style.left = e.clientX + 'px';
+        splash.style.top = e.clientY + 'px';
+        splash.style.background = `radial-gradient(circle, ${colors[Math.floor(Math.random() * colors.length)]} 0%, transparent 70%)`;
+        document.body.appendChild(splash);
+        setTimeout(() => splash.remove(), 800);
+      }
+    });
+
+    // ===== Music (Web Audio API - Simple Tone) =====
+    let audioContext = null;
+    let isPlaying = false;
+    let musicInterval = null;
+
+    function playFestiveMusic() {
+      if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      }
+
+      if (audioContext.state === 'suspended') {
+        audioContext.resume();
+      }
+
+      const notes = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25];
+      let noteIndex = 0;
+
+      function playNote() {
+        if (!isPlaying) return;
+
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+
+        oscillator.frequency.value = notes[noteIndex % notes.length];
+        oscillator.type = 'sine';
+
+        gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + 0.3);
+
+        noteIndex++;
+      }
+
+      isPlaying = true;
+      musicInterval = setInterval(playNote, 400);
+      playNote();
+    }
+
+    function stopMusic() {
+      isPlaying = false;
+      if (musicInterval) {
+        clearInterval(musicInterval);
+        musicInterval = null;
+      }
+    }
+
+    // ===== Music Button =====
+    const musicBtn = document.getElementById('musicBtn');
+    musicBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        stopMusic();
+        musicBtn.textContent = '🎵 Play Music';
+      } else {
+        playFestiveMusic();
+        musicBtn.textContent = '🔇 Mute Music';
+      }
+    });
+
+    // ===== Surprise Button =====
+    const surpriseBtn = document.getElementById('surpriseBtn');
+    const entryScreen = document.getElementById('entryScreen');
+    const mainContent = document.getElementById('mainContent');
+
+    surpriseBtn.addEventListener('click', () => {
+      entryScreen.classList.add('hidden');
+      mainContent.classList.add('visible');
+      
+      // Trigger all animations
+      setTimeout(() => {
+        createConfetti();
+        triggerFireworks();
+        playFestiveMusic();
+        musicBtn.textContent = '🔇 Mute Music';
+      }, 300);
+    });
+
+    // ===== WhatsApp Share =====
+    const shareBtn = document.getElementById('shareBtn');
+    shareBtn.addEventListener('click', () => {
+      const currentUrl = window.location.href.split('?')[0];
+      const shareText = `🎨 Happy Holi 2026! 🌈\n\nI'm sending you colorful wishes! Click to see your special Holi greeting:\n${currentUrl}?name=${encodeURIComponent(visitorName === 'Friend' ? 'YourName' : visitorName)}`;
+      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    });
+
+    // ===== Loading Screen =====
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loadingScreen').classList.add('hidden');
+        updateGreeting();
+      }, 2000);
+    });
+
+    // ===== Element SDK Integration =====
+    async function onConfigChange(cfg) {
+      const fontFamily = cfg.font_family || defaultConfig.font_family;
+      document.body.style.fontFamily = `${fontFamily}, sans-serif`;
+
+      const greetingEl = document.getElementById('greetingText');
+      const mainGreeting = cfg.main_greeting || defaultConfig.main_greeting;
+      greetingEl.textContent = `🌈 ${mainGreeting.replace('!', '')}, ${visitorName}! 🎉`;
+
+      const subMessageEl = document.getElementById('subMessage');
+      subMessageEl.textContent = cfg.sub_message || defaultConfig.sub_message;
+
+      const footerEl = document.getElementById('footerText');
+      footerEl.textContent = cfg.footer_text || defaultConfig.footer_text;
+    }
+
+    function mapToCapabilities(cfg) {
+      return {
+        recolorables: [
+          {
+            get: () => cfg.background_color || defaultConfig.background_color,
+            set: (value) => {
+              cfg.background_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => cfg.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              cfg.accent_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ accent_color: value });
+            }
+          },
+          {
+            get: () => cfg.secondary_accent || defaultConfig.secondary_accent,
+            set: (value) => {
+              cfg.secondary_accent = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ secondary_accent: value });
+            }
+          },
+          {
+            get: () => cfg.button_color || defaultConfig.button_color,
+            set: (value) => {
+              cfg.button_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ button_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => cfg.font_family || defaultConfig.font_family,
+          set: (value) => {
+            cfg.font_family = value;
+            if (window.elementSdk) window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(cfg) {
+      return new Map([
+        ['main_greeting', cfg.main_greeting || defaultConfig.main_greeting],
+        ['sub_message', cfg.sub_message || defaultConfig.sub_message],
+        ['footer_text', cfg.footer_text || defaultConfig.footer_text]
+      ]);
+    }
+
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d60d9bfa1c1f82b',t:'MTc3MjQ1OTIxOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
